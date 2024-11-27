@@ -44,8 +44,6 @@ plugins = [
   "ikz_pld @ git+https://github.com/FAIRmat-NFDI/AreaA-data_modeling_and_schemas.git#subdirectory=PVD/PLD/jeremy_ikz/ikz_pld_plugin"
 ]
 
-
-]
 jupyter = [
   "sed-processor>=0.3.2,<1.0.0",
   "specsanalyzer>=0.4.1,<1.0.0",
