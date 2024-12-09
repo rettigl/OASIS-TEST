@@ -1,22 +1,142 @@
 services:
-  api_host: "localhost"
-  api_base_path: "/nomad-oasis"
+  api_host: "pcr840.gnz.mpg.de"
+  api_base_path: "/nomad"
+  upload_limit: 1000000
 
 oasis:
   is_oasis: true
   uses_central_user_management: true
+  allowed_users: 
+        - arora@fhi-berlin.mpg.de
+        - decastro@fhi-berlin.mpg.de
+        - ernstorfer@fhi.mpg.de
+        - jung@fhi-berlin.mpg.de
+        - lloyd@fhi-berlin.mpg.de
+        - lu@fhi-berlin.mpg.de
+        - malter@fhi-berlin.mpg.de
+        - mukherjee@fhi-berlin.mpg.de
+        - pincelli@fhi-berlin.mpg.de
+        - rettig@fhi-berlin.mpg.de
+        - sarkar@fhi-berlin.mpg.de
+        - taylor@fhi-berlin.mpg.de
+        - wahada@fhi-berlin.mpg.de
+        - windsor@fhi-berlin.mpg.de
+        - wolf@fhi-berlin.mpg.de
+        - florian.dobener@physik.hu-berlin.de
+        - devita@fhi-berlin.mpg.de
+        - yousofnia@fhi-berlin.mpg.de
+        - laird@@fhi-berlin.mpg.de
+        - degranrut@fhi.mpg.de
+        - myksa@fhi-berlin.mpg.de
 
 north:
-  jupyterhub_crypt_key: "978bfb2e13a8448a253c629d8dd84ff89587f30e635b753153960930cad9d36d"
-  tools:
+  jupyterhub_crypt_key: "12827c31513523b3534209e4280267076705059deaf55d45861eebd6242e408f"
+  enabled: true
+  tools: 
+    include:
+      - jupyter
+      - mpes
+      - mpesjupyter
+      - igor
+      - fiji
     options:
       jupyter:
         image: ghcr.io/rettigl/oasis-fhi-pc-trarpes/jupyter:main
 
+      mpes:
+        short_description: A webtop container for ARPES analysis.
+        description: A webtop container for ARPES analysis.
+        image: gitlab-registry.mpcdf.mpg.de/nomad-lab/north/mpes/webtop-fhi:latest
+        mount_path: /config
+        privileged: 1
+        file_extensions:
+          - ipynb
+          - nxs
+          - h5
+          - hdf5
+        external_mounts:
+          - host_path: /mnt/pcshare
+            bind: pcshare
+            mode: ro
+          - host_path: /scratch/localDataStore
+            bind: localDataStore
+            mode: rw
+          - host_path: /mnt/topfloor
+            bind: topfloor
+            mode: ro
+        maintainer:
+          - name: Laurenz Rettig
+            email: rettig@fhi-berlin.mpg.de
+      igor:
+        short_description: A webtop container for ARPES analysis with Igor Pro.
+        description: A webtop container for ARPES analysis  with Igor Pro.
+        image: mpes-igor
+        mount_path: /config
+        privileged: 1
+        file_extensions:
+          - ipynb
+          - nxs
+          - h5
+          - hdf5
+        external_mounts:
+          - host_path: /mnt/pcshare
+            bind: pcshare
+            mode: rw
+          - host_path: /scratch/localDataStore
+            bind: localDataStore
+            mode: rw
+          - host_path: /mnt/topfloor
+            bind: topfloor
+            mode: ro
+        maintainer:
+          - name: Laurenz Rettig
+            email: rettig@fhi-berlin.mpg.de
+      mpesjupyter:
+        short_description: A jupyter container for ARPES analysis.
+        description: A jupyter container for ARPES analysis.
+        image: gitlab-registry.mpcdf.mpg.de/nomad-lab/north/mpes/jupyter-fhi:latest
+        mount_path: /home/jovyan
+        icon: jupyter_logo.svg
+        file_extensions:
+          - ipynb
+        external_mounts:
+          - host_path: /mnt/pcshare
+            bind: pcshare
+            mode: ro
+          - host_path: /scratch/localDataStore
+            bind: localDataStore
+            mode: rw
+          - host_path: /mnt/topfloor
+            bind: topfloor
+            mode: ro
+        maintainer:
+          - name: Laurenz Rettig
+            email: rettig@fhi-berlin.mpg.de
+      fiji:
+        short_description: A jupyter container for ImageJ
+        description: A jupyter container for ImageJ.
+        image: gitlab-registry.mpcdf.mpg.de/nomad-lab/north/fiji:weptop-replacement
+        mount_path: /home/jovyan
+        external_mounts: []
+        file_extensions:
+          - tif
+          - tiff
+          - jpeg
+          - png
+          - gif
+          - bmp
+          - avi
+        image_pull_policy: Always
+        privileged: false
+        maintainer:
+          - name: Laurenz Rettig
+            email: rettig@fhi-berlin.mpg.de
+        with_path: false
+
 meta:
   deployment: "oasis"
-  deployment_url: "https://my-oasis.org/api"
-  maintainer_email: "me@my-oasis.org"
+  deployment_url: "https://pcr840.gnz.mpg.de/api"
+  maintainer_email: "rettig@fhi-berlin.mpg.de"
 
 logstash:
   enable: false
