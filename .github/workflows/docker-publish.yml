@@ -39,7 +39,7 @@ jobs:
           python-version: "3.11"
 
       - name: Update lock file
-        run: uv lock --upgrade-package nomad-lab
+        run: uv lock --upgrade-package nomad-lab --prerelease allow
 
       # Commits any changes made to the lockfile
       - name: Commit lock file changes
