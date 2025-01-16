@@ -144,6 +144,8 @@ RUN --mount=type=cache,target=/root/.cache/uv \
     --mount=type=bind,source=pyproject.toml,target=pyproject.toml \
     uv export --extra plugins --extra jupyter --prerelease=explicit | uv pip install -r /dev/stdin --system --prerelease=explicit
 
+# Copy IgorPro logo
+COPY resources/igor.png /opt/venv/lib/python3.12/site-packages/nomad/app/static/gui
 
 # Get rid ot the following message when you open a terminal in jupyterlab:
 # groups: cannot find name for group ID 11320
