@@ -2283,7 +2283,7 @@ requires-dist = [
 
 [[package]]
 name = "nomad-lab"
-version = "1.3.14.dev109+g49ad53611"
+version = "1.3.14.dev117+g1639760e9"
 source = { registry = "https://gitlab.mpcdf.mpg.de/api/v4/projects/2187/packages/pypi/simple" }
 dependencies = [
     { name = "aniso8601" },
@@ -2328,7 +2328,7 @@ dependencies = [
     { name = "wrapt" },
     { name = "xarray" },
 ]
-sdist = { url = "https://gitlab.mpcdf.mpg.de/api/v4/projects/2187/packages/pypi/files/14d90e5fa8efe8bee1bd70125f2ff2d8e79e13e3f2124773e5394dbc752e4768/nomad-lab-1.3.14.dev109+g49ad53611.tar.gz", hash = "sha256:14d90e5fa8efe8bee1bd70125f2ff2d8e79e13e3f2124773e5394dbc752e4768" }
+sdist = { url = "https://gitlab.mpcdf.mpg.de/api/v4/projects/2187/packages/pypi/files/db624eedf523df8721a55060462cd49239f6d2c3243c74681ab4adc80298dade/nomad-lab-1.3.14.dev117+g1639760e9.tar.gz", hash = "sha256:db624eedf523df8721a55060462cd49239f6d2c3243c74681ab4adc80298dade" }
 
 [package.optional-dependencies]
 dev = [
