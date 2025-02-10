@@ -962,6 +962,11 @@ wheels = [
 ]
 
 [[package]]
+name = "fhi-sed-config"
+version = "0.1.dev27+g6a441bb"
+source = { git = "https://github.com/OpenCOMPES/fhi_sed_config.git?rev=nomad_template#6a441bbca64b82a720096e24db61a57d5c59d068" }
+
+[[package]]
 name = "filelock"
 version = "3.3.1"
 source = { registry = "https://gitlab.mpcdf.mpg.de/api/v4/projects/2187/packages/pypi/simple" }
@@ -2267,6 +2272,7 @@ dev = [
     { name = "nomad-lab", extra = ["dev", "infrastructure", "parsing"] },
 ]
 plugins = [
+    { name = "fhi-sed-config" },
     { name = "pynxtools" },
     { name = "pynxtools-igor" },
     { name = "pynxtools-mpes" },
@@ -2274,16 +2280,17 @@ plugins = [
 
 [package.metadata]
 requires-dist = [
-    { name = "nomad-lab", extras = ["parsing", "infrastructure"], specifier = "==1.3.14.dev117+g1639760e9" },
-    { name = "nomad-lab", extras = ["parsing", "infrastructure", "dev"], marker = "extra == 'dev'", specifier = "==1.3.14.dev117+g1639760e9" },
+    { name = "fhi-sed-config", marker = "extra == 'plugins'", git = "https://github.com/OpenCOMPES/fhi_sed_config.git?rev=nomad_template" },
+    { name = "nomad-lab", extras = ["parsing", "infrastructure"], specifier = "==1.3.14.dev109+g49ad53611" },
+    { name = "nomad-lab", extras = ["parsing", "infrastructure", "dev"], marker = "extra == 'dev'", specifier = "==1.3.14.dev109+g49ad53611" },
     { name = "pynxtools", marker = "extra == 'plugins'", git = "https://github.com/FAIRmat-NFDI/pynxtools.git?rev=master" },
     { name = "pynxtools-igor", marker = "extra == 'plugins'", specifier = ">=0.1" },
-    { name = "pynxtools-mpes", marker = "extra == 'plugins'", git = "https://github.com/FAIRmat-NFDI/pynxtools-mpes.git?rev=mpes_app" },
+    { name = "pynxtools-mpes", marker = "extra == 'plugins'", git = "https://github.com/FAIRmat-NFDI/pynxtools-mpes.git?rev=main" },
 ]
 
 [[package]]
 name = "nomad-lab"
-version = "1.3.14.dev117+g1639760e9"
+version = "1.3.14.dev109+g49ad53611"
 source = { registry = "https://gitlab.mpcdf.mpg.de/api/v4/projects/2187/packages/pypi/simple" }
 dependencies = [
     { name = "aniso8601" },
@@ -2328,7 +2335,7 @@ dependencies = [
     { name = "wrapt" },
     { name = "xarray" },
 ]
-sdist = { url = "https://gitlab.mpcdf.mpg.de/api/v4/projects/2187/packages/pypi/files/db624eedf523df8721a55060462cd49239f6d2c3243c74681ab4adc80298dade/nomad-lab-1.3.14.dev117+g1639760e9.tar.gz", hash = "sha256:db624eedf523df8721a55060462cd49239f6d2c3243c74681ab4adc80298dade" }
+sdist = { url = "https://gitlab.mpcdf.mpg.de/api/v4/projects/2187/packages/pypi/files/14d90e5fa8efe8bee1bd70125f2ff2d8e79e13e3f2124773e5394dbc752e4768/nomad-lab-1.3.14.dev109+g49ad53611.tar.gz", hash = "sha256:14d90e5fa8efe8bee1bd70125f2ff2d8e79e13e3f2124773e5394dbc752e4768" }
 
 [package.optional-dependencies]
 dev = [
@@ -3127,8 +3134,8 @@ wheels = [
 
 [[package]]
 name = "pynxtools-mpes"
-version = "0.2.2.dev6+g4e2c014"
-source = { git = "https://github.com/FAIRmat-NFDI/pynxtools-mpes.git?rev=mpes_app#4e2c0142fb8612a9c3f121595d6ffcfb2597e412" }
+version = "0.2.2.dev6+g10254ea"
+source = { git = "https://github.com/FAIRmat-NFDI/pynxtools-mpes.git?rev=main#10254ea9026cfd2d0c12ec97af848c2d84becbc7" }
 dependencies = [
     { name = "h5py" },
     { name = "pynxtools" },
