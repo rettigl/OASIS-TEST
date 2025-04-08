@@ -1,6 +1,6 @@
 version = 1
 revision = 1
-requires-python = ">=3.10, <3.13"
+requires-python = ">=3.10"
 resolution-markers = [
     "python_full_version >= '3.12'",
     "python_full_version == '3.11.*'",
@@ -3458,6 +3458,7 @@ sdist = { url = "https://files.pythonhosted.org/packages/47/5d/5f6c2d7ef225a92f3
 wheels = [
     { url = "https://files.pythonhosted.org/packages/7f/5d/f0604fa8e642562118ad330088959623ba84cb56c965a23b34c8e2ce225a/nomad_dos_fingerprints-1.0.2-py3-none-any.whl", hash = "sha256:cc01ed88d35f751ef13c89e75faeea16fef16ab8363b3a6fcb4f810afacb6338", size = 10593 },
 ]
+provides-extras = ["plugins", "jupyter", "dev"]
 
 [[package]]
 name = "nomad-lab"
