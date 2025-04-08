@@ -1,4 +1,5 @@
 version = 1
+revision = 1
 requires-python = ">=3.10, <3.13"
 resolution-markers = [
     "python_full_version >= '3.12' and sys_platform == 'win32'",
@@ -2352,7 +2353,6 @@ wheels = [
 
 [[package]]
 name = "nomad-distribution"
-version = "2.0.1.dev70+ge00c5ee.d20250408"
 source = { editable = "." }
 dependencies = [
     { name = "nomad-lab", extra = ["infrastructure"] },
@@ -2384,6 +2384,7 @@ requires-dist = [
     { name = "sed-processor", marker = "extra == 'jupyter'", specifier = ">=1.1.0" },
     { name = "specsanalyzer", marker = "extra == 'jupyter'", specifier = ">=1.0.0" },
 ]
+provides-extras = ["plugins", "jupyter", "dev"]
 
 [[package]]
 name = "nomad-lab"
