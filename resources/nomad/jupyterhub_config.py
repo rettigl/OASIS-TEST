@@ -95,7 +95,7 @@ def pre_spawn(spawner):
             ]
 
         if extra_host_config:
-            spawner.extra_host_config = extra_host_config
+            spawner.extra_host_config.update(extra_host_config)
 
 
 c.Spawner.pre_spawn_hook = pre_spawn
