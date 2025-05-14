@@ -112,8 +112,9 @@ COPY configs/nomad.yaml nomad.yaml
 # Copy IgorPro logo
 COPY resources/igor.png /opt/venv/lib/python3.12/site-packages/nomad/app/static/gui/logo/
 # Copy updated files
-COPY resources/nomad/* /opt/venv/lib/python3.12/site-packages/nomad/
-
+COPY resources/nomad/jupyterhub_config.py /opt/venv/lib/python3.12/site-packages/nomad/
+COPY resources/nomad/config/models/north.py /opt/venv/lib/python3.12/site-packages/nomad/config/models/
+COPY resources/nomad/app/v1/routers/north.py /opt/venv/lib/python3.12/site-packages/nomad/app/v1/routers/
 
 RUN mkdir -p /app/.volumes/fs \
  && chown -R nomad:1000 /app \
