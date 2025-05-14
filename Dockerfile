@@ -109,6 +109,12 @@ COPY --chown=nomad:1000 scripts/run.sh .
 COPY --chown=nomad:1000 scripts/run-worker.sh .
 COPY configs/nomad.yaml nomad.yaml
 
+# Copy IgorPro logo
+COPY resources/igor.png /opt/venv/lib/python3.12/site-packages/nomad/app/static/gui/logo/
+# Copy updated files
+COPY resources/nomad/* /opt/venv/lib/python3.12/site-packages/nomad/
+
+
 RUN mkdir -p /app/.volumes/fs \
  && chown -R nomad:1000 /app \
  && chown -R nomad:1000 /opt/venv \
@@ -150,9 +156,6 @@ RUN --mount=type=cache,target=/root/.cache/uv \
     --mount=type=bind,source=uv.lock,target=uv.lock \
     --mount=type=bind,source=pyproject.toml,target=pyproject.toml \
     uv export --extra plugins --extra jupyter | uv pip install -r /dev/stdin --system
-
-# Copy IgorPro logo
-COPY resources/igor.png /opt/venv/lib/python3.12/site-packages/nomad/app/static/gui/logo/
 
 # Get rid ot the following message when you open a terminal in jupyterlab:
 # groups: cannot find name for group ID 11320
