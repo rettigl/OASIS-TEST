@@ -86,13 +86,22 @@ def pre_spawn(spawner):
 
         if tool.get('use_gpu'):
             import docker
+            import subprocess
 
-            extra_host_config['device_requests'] = [
-                docker.types.DeviceRequest(
-                    count=-1,
-                    capabilities=[['gpu']],
-                ),
-            ]
+            # Check if any GPUs are available
+            try:
+                subprocess.check_output('nvidia-smi')
+                extra_host_config['device_requests'] = [
+                    docker.types.DeviceRequest(
+                        count=-1,
+                        capabilities=[['gpu']],
+                    ),
+                ]
+            except Exception:
+                spawner.log.warning(
+                    'GPU requested but no GPU found on host. Disabling GPU usage for this container.'
+                )
+                tool['use_gpu'] = False
 
         if extra_host_config:
             spawner.extra_host_config.update(extra_host_config)
