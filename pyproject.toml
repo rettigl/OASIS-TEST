@@ -1,6 +1,9 @@
 [build-system]
-requires = ["setuptools>=64"]
+requires = ["setuptools>=64", "setuptools-scm"]
 build-backend = "setuptools.build_meta"
+
+[tool.setuptools_scm]
+fallback_version = "0.0"
 
 [project]
 classifiers = [
@@ -13,11 +16,14 @@ classifiers = [
 ]
 name = "nomad-distribution"
 description = "nomad distribution template"
-version = "0.1"
+dynamic = ["version"]
 readme = "README.md"
-requires-python = ">=3.10"
+requires-python = ">=3.10, <3.13"
 license = { file = "LICENSE" }
-dependencies = ["nomad-lab[parsing, infrastructure]==1.3.14.dev109+g49ad53611"]
+dependencies = ["nomad-lab[parsing, infrastructure]==1.3.16"]
+
+[project.urls]
+repository = "https://github.com/rettigl/oasis-fhi-pc-trarpes"
 
 [project.optional-dependencies]
 plugins = [
@@ -27,8 +33,8 @@ plugins = [
 #  "nomad-simulations==0.0.1",
   "pynxtools @ git+https://github.com/FAIRmat-NFDI/pynxtools.git@master",
   "pynxtools-mpes @ git+https://github.com/FAIRmat-NFDI/pynxtools-mpes.git@main",
-  "pynxtools-igor>=0.1",
-  "fhi-sed-config @ git+https://github.com/OpenCOMPES/fhi_sed_config.git@nomad_template",
+  "pynxtools-igor @ git+https://github.com/FAIRmat-NFDI/pynxtools-igor.git@main",
+  "fhi-sed-config @ git+https://github.com/OpenCOMPES/fhi_sed_config.git@main",
 #  "nomad-schema-plugin-run>=1.0.1",
 #  "nomad-schema-plugin-simulation-workflow>=1.0.1",
 #  "nomad-normalizer-plugin-bandstructure>=1.0",
@@ -48,17 +54,17 @@ plugins = [
 ]
 
 jupyter = [
-#  "sed-processor>=0.3.2,<1.0.0",
-#  "specsanalyzer>=0.4.1,<1.0.0",
+  "sed-processor>=1.1.0",
+  "specsanalyzer>=1.0.0",
 ]
-dev = ["nomad-lab[parsing, infrastructure, dev]==1.3.14.dev109+g49ad53611"]
+dev = ["nomad-lab[parsing, infrastructure, dev]==1.3.16"]
 
 [tool.uv]
 extra-index-url = [
   "https://gitlab.mpcdf.mpg.de/api/v4/projects/2187/packages/pypi/simple",
 ]
 constraint-dependencies = ["hyperspy>=1.7.6"]
-prerelease = "disallow"
+prerelease = "allow"
 
 [tool.setuptools.packages.find]
 exclude = ["gui*", "docs*", "config*"]
