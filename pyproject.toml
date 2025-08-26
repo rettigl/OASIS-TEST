@@ -20,7 +20,7 @@ dynamic = ["version"]
 readme = "README.md"
 requires-python = ">=3.10, <3.13"
 license = { file = "LICENSE" }
-dependencies = ["nomad-lab[parsing, infrastructure]==1.3.17rc2"]
+dependencies = ["nomad-lab[parsing, infrastructure]==1.3.17"]
 
 [project.urls]
 repository = "https://github.com/rettigl/oasis-fhi-pc-trarpes"
@@ -34,7 +34,7 @@ plugins = [
   "pynxtools>=0.11.1",
   "pynxtools-mpes>=0.2.5",
   "pynxtools-igor>=0.1.3",
-  "fhi-sed-config @ git+https://github.com/OpenCOMPES/fhi_sed_config.git@main",
+  "fhi-sed-config @ git+https://github.com/OpenCOMPES/fhi_sed_config.git@v1.3.17",
 #  "nomad-schema-plugin-run>=1.0.1",
 #  "nomad-schema-plugin-simulation-workflow>=1.0.1",
 #  "nomad-normalizer-plugin-bandstructure>=1.0",
@@ -57,14 +57,14 @@ jupyter = [
   "sed-processor>=1.1.0",
   "specsanalyzer>=1.0.0",
 ]
-dev = ["nomad-lab[parsing, infrastructure, dev]==1.3.17rc2"]
+dev = ["nomad-lab[parsing, infrastructure, dev]==1.3.17"]
 
 [tool.uv]
 extra-index-url = [
   "https://gitlab.mpcdf.mpg.de/api/v4/projects/2187/packages/pypi/simple",
 ]
 constraint-dependencies = ["hyperspy>=1.7.6"]
-prerelease = "allow"
+prerelease = "disallow"
 
 [tool.setuptools.packages.find]
 exclude = ["gui*", "docs*", "config*"]
