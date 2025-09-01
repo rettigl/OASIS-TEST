@@ -1,5 +1,5 @@
 version = 1
-revision = 2
+revision = 3
 requires-python = ">=3.10, <3.13"
 resolution-markers = [
     "python_full_version >= '3.12' and sys_platform == 'win32'",
@@ -951,7 +951,7 @@ wheels = [
 
 [[package]]
 name = "elabapi-python"
-version = "5.2.3"
+version = "5.1.0"
 source = { registry = "https://gitlab.mpcdf.mpg.de/api/v4/projects/2187/packages/pypi/simple" }
 dependencies = [
     { name = "certifi" },
@@ -959,9 +959,9 @@ dependencies = [
     { name = "six" },
     { name = "urllib3" },
 ]
-sdist = { url = "https://files.pythonhosted.org/packages/32/b8/fe8ebaac7c028174b5e185ba2663a785f99a0296a139c4503da0bb8fde4f/elabapi_python-5.2.3.tar.gz", hash = "sha256:9da3795d5615d500907f19d8f7f36028e89cf915f1a6e89e9b7dd7b27a7b9c0d", size = 111453, upload-time = "2025-07-02T11:08:19.986Z" }
+sdist = { url = "https://files.pythonhosted.org/packages/05/bd/5e6fe43e7d80d9d4009631e6dcc9c7d0cd4117515ea664c3c7bfcdaef7f7/elabapi_python-5.1.0.tar.gz", hash = "sha256:a6887c01e28f27fa580a6fa961f27dc7465f550c22f6daed2debb5363b000403", size = 94689, upload-time = "2024-11-19T13:00:56.128Z" }
 wheels = [
-    { url = "https://files.pythonhosted.org/packages/8f/2a/6719ecf44ed1a250cadb926893bef2a7f6735843ecb5847b6704bb2bb069/elabapi_python-5.2.3-py3-none-any.whl", hash = "sha256:421136d0fe8e3f8444474175803ead5b627ab46efb2b3aee6767c634db929a69", size = 331163, upload-time = "2025-07-02T11:08:18.884Z" },
+    { url = "https://files.pythonhosted.org/packages/b2/06/2b2858be9910df037738e5d732a670647c9e96884ccc0abd4d9138d30102/elabapi_python-5.1.0-py3-none-any.whl", hash = "sha256:34ccf750548dda27c4b8c4c0a3647e053226bde7a262e0ca05ddcd2114e70d85", size = 292955, upload-time = "2024-11-19T13:00:54.348Z" },
 ]
 
 [[package]]
@@ -3924,7 +3924,7 @@ wheels = [
 
 [[package]]
 name = "sed-processor"
-version = "1.2.0"
+version = "1.2.2"
 source = { registry = "https://gitlab.mpcdf.mpg.de/api/v4/projects/2187/packages/pypi/simple" }
 dependencies = [
     { name = "bokeh" },
@@ -3958,9 +3958,9 @@ dependencies = [
     { name = "xarray", version = "2025.6.1", source = { registry = "https://gitlab.mpcdf.mpg.de/api/v4/projects/2187/packages/pypi/simple" }, marker = "python_full_version < '3.11'" },
     { name = "xarray", version = "2025.8.0", source = { registry = "https://gitlab.mpcdf.mpg.de/api/v4/projects/2187/packages/pypi/simple" }, marker = "python_full_version >= '3.11'" },
 ]
-sdist = { url = "https://files.pythonhosted.org/packages/89/26/7cc37eb153e22bae02fe852c8f41c5bc42b7704a31d4ed5b9a1066502a48/sed_processor-1.2.0.tar.gz", hash = "sha256:cd94e42ce1886e120cb1dbe7d23101311adc383c32add890a749136dc170849b", size = 145967, upload-time = "2025-05-11T21:45:57.45Z" }
+sdist = { url = "https://files.pythonhosted.org/packages/c9/84/abbbbd1f23130dd95b8801eff33d79ce66e667560bbf314f4684a517b862/sed_processor-1.2.2.tar.gz", hash = "sha256:e0456e7d8e24945b79212dfc1357fba8334f80fc8c466460dd42403491462260", size = 146003, upload-time = "2025-08-27T14:36:44.944Z" }
 wheels = [
-    { url = "https://files.pythonhosted.org/packages/a4/c3/72bf00f8e534f39c12c819ec7590e07b5c2b748b9e3c9a09fea0eee3b530/sed_processor-1.2.0-py3-none-any.whl", hash = "sha256:0a8fb92451349078b070e916020188c5dc1ce5e99684705dcc85635413eec91c", size = 167301, upload-time = "2025-05-11T21:45:55.333Z" },
+    { url = "https://files.pythonhosted.org/packages/f6/9a/c727bfc6dbfb5b5111b8a3717d0e56bdb3c5ddec0bd8d6172b09b78fa1f7/sed_processor-1.2.2-py3-none-any.whl", hash = "sha256:6d4a4f92097aed74b8c7e2ef6cd0296b6db72868e0791232d3a9f71f4ef16e0e", size = 167331, upload-time = "2025-08-27T14:36:43.153Z" },
 ]
 
 [[package]]
