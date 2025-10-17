@@ -125,6 +125,18 @@ Below are instructions for how to deploy this NOMAD Oasis distribution
 
 7. Finally, open [http://localhost/nomad-oasis](http://localhost/nomad-oasis) in your browser to start using your new NOMAD Oasis.
 
+### Environment Variables
+
+Before running the containers, you should create a `.env` file in the root of the repository. This file is used to store sensitive information and is ignored by git.
+
+At a minimum, you should add a secure secret for the API:
+
+```
+NOMAD_SERVICES_API_SECRET='***'
+```
+
+Make sure the `NOMAD_SERVICES_API_SECRET` is at least 32 characters long.
+
 #### Updating the image
 Any pushes to the main branch of this repository, such as when [adding a plugin](#adding-a-plugin), will trigger a pipeline that generates a new app and jupyter image.
 
@@ -171,6 +183,30 @@ volumes:
 ```
 
 To run the new image you can follow steps 5. and 6. [above](#for-a-new-oasis).
+
+## Configuring Worker Replicas and Resource Limits
+
+The `docker-compose.yaml` file is configured to run four worker replicas by default, with each limited to 4 CPU cores and 8GB of RAM. You can adjust these values to match the capacity of your server.
+
+The relevant configuration is located in the `worker` service definition within the `docker-compose.yaml` file:
+
+```yaml
+services:
+  worker:
+    ...
+    deploy:
+      replicas: 4
+      resources:
+        limits:
+          cpus: "4.0" # Maximum 4 CPU cores
+          memory: 8G # Maximum 8GB RAM
+```
+
+-   `replicas`: The number of container instances to run for the worker service.
+-   `cpus`: The maximum number of CPU cores the container can use.
+-   `memory`: The maximum amount of memory the container can use.
+
+Adjust these values based on your server's available resources to optimize performance.
 
 ## Adding a plugin
 
