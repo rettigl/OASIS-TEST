@@ -1,4 +1,4 @@
-![docker image](https://github.com/rettigl/OASIS-FHI-PC-TRARPES/actions/workflows/docker-publish.yml/badge.svg)
+![docker image](https://github.com/rettigl/OASIS-TEST/actions/workflows/docker-publish.yml/badge.svg)
 
 
 # rettigl's NOMAD Oasis Distribution
@@ -44,16 +44,16 @@ Below are instructions for how to deploy this NOMAD Oasis distribution
 2. Clone the repository or download the repository as a zip file.
 
     ```sh
-    git clone https://github.com/rettigl/OASIS-FHI-PC-TRARPES.git
-    cd OASIS-FHI-PC-TRARPES
+    git clone https://github.com/rettigl/OASIS-TEST.git
+    cd OASIS-TEST
     ```
 
     or
 
     ```sh
-    curl-L -o OASIS-FHI-PC-TRARPES.zip "https://github.com/rettigl/OASIS-FHI-PC-TRARPES/archive/main.zip"
-    unzip OASIS-FHI-PC-TRARPES.zip
-    cd OASIS-FHI-PC-TRARPES
+    curl-L -o OASIS-TEST.zip "https://github.com/rettigl/OASIS-TEST/archive/main.zip"
+    unzip OASIS-TEST.zip
+    cd OASIS-TEST
     ```
 
 3. _On Linux only,_ recursively change the owner of the `.volumes` directory to the nomad user (1000)
@@ -158,7 +158,7 @@ You can find more details on setting up and maintaining an Oasis in the NOMAD do
 ### For an existing Oasis
 
 If you already have an Oasis running you only need to change the image being pulled in
-your `docker-compose.yaml` with `ghcr.io/rettigl/oasis-fhi-pc-trarpes:main` for the services
+your `docker-compose.yaml` with `ghcr.io/rettigl/oasis-test:main` for the services
 `worker`, `app`, `north`, and `logtransfer`.
 
 If you want to use the `nomad.yaml` from this repository you also need to comment out
@@ -311,7 +311,7 @@ Ideally all workflows should be triggered automatically but you might need to ru
 
 ## FAQ/Trouble shooting
 
-_I get an_ `Error response from daemon: Head "https://ghcr.io/v2/rettigl/OASIS-FHI-PC-TRARPES/manifests/main": unauthorized`
+_I get an_ `Error response from daemon: Head "https://ghcr.io/v2/rettigl/OASIS-TEST/manifests/main": unauthorized`
 _when trying to pull my docker image._
 
 Most likely you have not made the package public or provided a personal access token (PAT).
