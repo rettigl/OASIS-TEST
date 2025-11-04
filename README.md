@@ -23,12 +23,16 @@ and how to customize it through [adding plugins](#adding-a-plugin).
 
 In this README you will find instructions for:
 1. [Deploying the distribution](#deploying-the-distribution)
-2. [Adding a plugin](#adding-a-plugin)
-3. [Using the jupyter image](#the-jupyter-image)
-4. [Automated unit and example upload tests in CI](#automated-unit-and-example-upload-tests-in-ci)
-5. [Setup regular package updates with Dependabot](#set-up-regular-package-updates-with-dependabot)
-6. [Updating the distribution from the template](#updating-the-distribution-from-the-template)
-7. [Solving common issues](#faqtrouble-shooting)
+2. [Configuring Worker Replicas and Resource Limits](#configuring-worker-replicas-and-resource-limits)
+3. [Adding a plugin](#adding-a-plugin)
+4. [Using the jupyter image](#the-jupyter-image)
+5. [Automated unit and example upload tests in CI](#automated-unit-and-example-upload-tests-in-ci)
+6. [Setup regular package updates with Dependabot](#set-up-regular-package-updates-with-dependabot)
+7. [Customizing Documentation](#customizing-documentation)
+8. [Backing up the Oasis](#backing-up-the-oasis)
+9. [Enabling NOMAD Actions](#enabling-nomad-actions)
+10. [Updating the distribution from the template](#updating-the-distribution-from-the-template)
+11. [Solving common issues](#faqtrouble-shooting)
 
 ## Deploying the distribution
 
@@ -77,7 +81,7 @@ Below are instructions for how to deploy this NOMAD Oasis distribution
     If you have bash available you can run this script:
     
     ```sh
-    sh generate_env.sh
+    sh scripts/generate-env.sh
     ```
 
     This will create a `.env` file with a randomly generated 64-character API secret. If the file already exists, you'll be prompted before overwriting it.
@@ -154,7 +158,7 @@ Any pushes to the main branch of this repository, such as when [adding a plugin]
     docker compose down
     ```
 
-    and then repeat steps 4. and 5. above.
+    and then repeat steps 5. and 7. above.
 
 2. You can remove unused images to free up space by running
 
@@ -190,7 +194,7 @@ volumes:
   # - ./configs/nomad.yaml:/app/nomad.yaml
 ```
 
-To run the new image you can follow steps 5. and 6. [above](#for-a-new-oasis).
+To run the new image you can follow steps 5. and 7. [above](#for-a-new-oasis).
 
 ## Configuring Worker Replicas and Resource Limits
 
@@ -318,6 +322,68 @@ By default, documentation is built using the [nomad-docs](https://github.com/FAI
 
 This setup ensures that your custom documentation is used when building your Oasis.
 
+
+## Backing up the Oasis
+
+For detailed instructions on backing up the data on your Oasis we recommend reading the
+[NOMAD documentation on administration](https://nomad-lab.eu/prod/v1/staging/docs/howto/oasis/administer.html#backups).
+
+As part of this repository there is a bash script for running the mongodump in `scripts/backup-mongo.sh`.
+1. Make sure you are in the top directory of this repository and that the 
+`mongo` service (container `nomad_oasis_mongo`) is running.
+2. Make the script executable:
+
+    ```sh
+    chmod +x scripts/backup-mongo.sh
+    ```
+
+3. Run the script once to make sure the current user has the correct permissions:
+
+    ```sh
+    ./scripts/backup-mongo.sh
+    ```
+
+4. Check that a `nomad_oasis_v1` mongodump was created in `.volumes/mongo` and that the
+dump was added to the logfile.
+
+    ```sh
+    ls .volumes/mongo
+    cat .volumes/mongo/backup.log
+    ```
+
+5. (Optional) Add the script to the crontab to run for example every night at 2 am.
+From the top directory of this repository, run:
+
+    ```sh
+    (crontab -l 2>/dev/null; echo "0 2 * * * $(realpath scripts/backup-mongo.sh)") | crontab -
+    ```
+
+    Finally, check that the cronjob was added:
+
+    ```sh
+    crontab -l
+    ```
+
+> [!CAUTION]
+> This will only dump the NOMAD mongo data onto the server. It is still up to you
+> to setup a proper backup of the dump in the `.volumes/mongo` directory as well as all
+> the raw files in the `.volumes/fs` directory.
+
+## Enabling NOMAD Actions
+
+To enable NOMAD Actions, you need to decide whether you need a CPU worker, a GPU worker, or both, and then make the following changes:
+
+1.  **Enable the required worker service(s) in `docker-compose.yaml`:**
+
+    Uncomment the `cpu_worker` service, the `gpu_worker` service, or both in the `docker-compose.yaml` file depending on your needs.
+
+2.  **Enable the corresponding build step(s) in the Docker publish workflow:**
+
+    In the `.github/workflows/docker-publish.yml` file, uncomment the build step(s) corresponding to the worker(s) you enabled in the `docker-compose.yaml` file.
+
+3.  **Adjust deployment resources:**
+
+    If necessary, adjust the deployment resources (e.g., CPU, memory, replicas) for the enabled worker service(s) in the `docker-compose.yaml` file to match your server's capacity.
 
 ## Updating the distribution from the template
 
