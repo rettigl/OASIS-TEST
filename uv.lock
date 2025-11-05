@@ -3382,9 +3382,9 @@ requires-dist = [
     { name = "pynxtools", marker = "extra == 'plugins'", specifier = ">=0.12.0" },
     { name = "pynxtools-igor", marker = "extra == 'plugins'", specifier = ">=0.1.4" },
     { name = "pynxtools-mpes", marker = "extra == 'plugins'", specifier = ">=0.2.6" },
-    { name = "sed-processor", marker = "extra == 'jupyter'", specifier = ">=1.1.0" },
+    { name = "sed-processor", marker = "extra == 'jupyter'", specifier = ">=1.3.0" },
     { name = "setuptools" },
-    { name = "specsanalyzer", marker = "extra == 'jupyter'", specifier = ">=1.0.0" },
+    { name = "specsanalyzer", marker = "extra == 'jupyter'", specifier = ">=1.2.0" },
 ]
 provides-extras = ["plugins", "jupyter", "dev"]
 
@@ -6101,7 +6101,7 @@ wheels = [
 
 [[package]]
 name = "sed-processor"
-version = "1.2.2"
+version = "1.3.0"
 source = { registry = "https://gitlab.mpcdf.mpg.de/api/v4/projects/2187/packages/pypi/simple" }
 dependencies = [
     { name = "bokeh" },
@@ -6136,9 +6136,9 @@ dependencies = [
     { name = "xarray", version = "2025.6.1", source = { registry = "https://gitlab.mpcdf.mpg.de/api/v4/projects/2187/packages/pypi/simple" }, marker = "python_full_version < '3.11'" },
     { name = "xarray", version = "2025.10.1", source = { registry = "https://gitlab.mpcdf.mpg.de/api/v4/projects/2187/packages/pypi/simple" }, marker = "python_full_version >= '3.11'" },
 ]
-sdist = { url = "https://files.pythonhosted.org/packages/c9/84/abbbbd1f23130dd95b8801eff33d79ce66e667560bbf314f4684a517b862/sed_processor-1.2.2.tar.gz", hash = "sha256:e0456e7d8e24945b79212dfc1357fba8334f80fc8c466460dd42403491462260", size = 146003, upload-time = "2025-08-27T14:36:44.944Z" }
+sdist = { url = "https://files.pythonhosted.org/packages/d7/18/9b3802da8db27164a46d73a9def0ccdaaa177d98fadf8420d7db73f8b02d/sed_processor-1.3.0.tar.gz", hash = "sha256:695ff385237e408b8e5d0758d62e7c810156153b134b1352d76a2e1d534d4afb", size = 146511, upload-time = "2025-11-05T08:28:25.403Z" }
 wheels = [
-    { url = "https://files.pythonhosted.org/packages/f6/9a/c727bfc6dbfb5b5111b8a3717d0e56bdb3c5ddec0bd8d6172b09b78fa1f7/sed_processor-1.2.2-py3-none-any.whl", hash = "sha256:6d4a4f92097aed74b8c7e2ef6cd0296b6db72868e0791232d3a9f71f4ef16e0e", size = 167331, upload-time = "2025-08-27T14:36:43.153Z" },
+    { url = "https://files.pythonhosted.org/packages/18/77/ee710ccfc81ec149fc74e816f470e34a64385b8e14b8208aac144533d0c6/sed_processor-1.3.0-py3-none-any.whl", hash = "sha256:aa2e40055e8f83216dbca78a489ae68f2493233713a3cbd0a21c830253cc98db", size = 167714, upload-time = "2025-11-05T08:28:23.533Z" },
 ]
 
 [[package]]
@@ -6197,7 +6197,7 @@ wheels = [
 
 [[package]]
 name = "specsanalyzer"
-version = "1.1.1"
+version = "1.2.0"
 source = { registry = "https://gitlab.mpcdf.mpg.de/api/v4/projects/2187/packages/pypi/simple" }
 dependencies = [
     { name = "elabapi-python" },
@@ -6221,9 +6221,9 @@ dependencies = [
     { name = "xarray", version = "2025.6.1", source = { registry = "https://gitlab.mpcdf.mpg.de/api/v4/projects/2187/packages/pypi/simple" }, marker = "python_full_version < '3.11'" },
     { name = "xarray", version = "2025.10.1", source = { registry = "https://gitlab.mpcdf.mpg.de/api/v4/projects/2187/packages/pypi/simple" }, marker = "python_full_version >= '3.11'" },
 ]
-sdist = { url = "https://files.pythonhosted.org/packages/70/60/7c711e32732dd9145e98b3fcf9e99da34b9eaa6da0d85ff076cacafa7520/specsanalyzer-1.1.1.tar.gz", hash = "sha256:8ad1134327338280cbe73ab7de8a277678f3ec2d60c88dd77b0a75052a409caa", size = 44890, upload-time = "2025-08-27T14:36:06.466Z" }
+sdist = { url = "https://files.pythonhosted.org/packages/48/13/e5a09712319b0976f07c2f76f39d39a720740210243bc7673a73e6cd9e54/specsanalyzer-1.2.0.tar.gz", hash = "sha256:8cdddeba4c0a82249b630c3579ed85f2aba025e16cc7f0ac403e180cd093a2a3", size = 44897, upload-time = "2025-11-04T20:45:47.96Z" }
 wheels = [
-    { url = "https://files.pythonhosted.org/packages/71/47/e1b2b84b8c91cf47ba78b2f023090bdf2687628be0e8786ab4ef6bc69be4/specsanalyzer-1.1.1-py3-none-any.whl", hash = "sha256:cca753f0b91c0f373fe2c8c35fc564408f8d1826849fdbeaff48313dbc43687e", size = 50918, upload-time = "2025-08-27T14:36:05.24Z" },
+    { url = "https://files.pythonhosted.org/packages/ca/ca/da33008a5594aa4b7de3f9f5feb830fad22e2d3d6848db89a488e360aefc/specsanalyzer-1.2.0-py3-none-any.whl", hash = "sha256:728806c5ec579a14ac52a5b9fce575af222f8d9c8208b05cd808f2b9c828b3ef", size = 50911, upload-time = "2025-11-04T20:45:46.439Z" },
 ]
 
 [[package]]
