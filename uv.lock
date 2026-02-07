@@ -3319,8 +3319,8 @@ requires-dist = [
     { name = "fhi-sed-config", marker = "extra == 'plugins'", git = "https://github.com/OpenCOMPES/fhi_sed_config.git?rev=v1.3.17" },
     { name = "jupyter-events", marker = "extra == 'jupyter'" },
     { name = "nomad-aitoolkit", marker = "extra == 'plugins'", git = "https://github.com/FAIRmat-NFDI/nomad-aitoolkit.git?rev=b203f8eb28dc4b6771a39d5c5b7ad3d9d8583ac8" },
-    { name = "nomad-lab", extras = ["dev", "infrastructure", "parsing"], marker = "extra == 'dev'", specifier = "==1.4.1rc2" },
-    { name = "nomad-lab", extras = ["infrastructure", "parsing"], specifier = "==1.4.1rc2" },
+    { name = "nomad-lab", extras = ["dev", "infrastructure", "parsing"], marker = "extra == 'dev'", specifier = "==1.4.1" },
+    { name = "nomad-lab", extras = ["infrastructure", "parsing"], specifier = "==1.4.1" },
     { name = "nomad-material-processing", marker = "extra == 'plugins'", specifier = ">=1.0.0" },
     { name = "nomad-measurements", marker = "extra == 'plugins'", specifier = ">=1.0.0" },
     { name = "nomad-normalizer-plugin-bandstructure", marker = "extra == 'plugins'", specifier = ">=1.0" },
@@ -3340,7 +3340,7 @@ requires-dist = [
     { name = "perovskite-solar-cell-database", marker = "extra == 'plugins'", git = "https://github.com/FAIRmat-NFDI/nomad-perovskite-solar-cells-database.git?rev=b29cbbd808a6c9c0c45cdd10c6e7982375342d9f" },
     { name = "pynxtools", marker = "extra == 'plugins'", specifier = ">=0.12.0" },
     { name = "pynxtools-igor", marker = "extra == 'plugins'", specifier = ">=0.1.4" },
-    { name = "pynxtools-mpes", marker = "extra == 'plugins'", specifier = ">=0.2.6" },
+    { name = "pynxtools-mpes", marker = "extra == 'plugins'", git = "https://github.com/FAIRmat-NFDI/pynxtools-mpes.git?rev=cruft-updates" },
     { name = "sed-processor", marker = "extra == 'jupyter'", specifier = ">=1.3.0" },
     { name = "setuptools" },
     { name = "specsanalyzer", marker = "extra == 'jupyter'", specifier = ">=1.2.0" },
@@ -3361,7 +3361,7 @@ wheels = [
 
 [[package]]
 name = "nomad-lab"
-version = "1.4.1rc2"
+version = "1.4.1"
 source = { registry = "https://gitlab.mpcdf.mpg.de/api/v4/projects/2187/packages/pypi/simple" }
 dependencies = [
     { name = "ase" },
@@ -3404,9 +3404,9 @@ dependencies = [
     { name = "xarray", version = "2025.6.1", source = { registry = "https://gitlab.mpcdf.mpg.de/api/v4/projects/2187/packages/pypi/simple" }, marker = "python_full_version < '3.11'" },
     { name = "xarray", version = "2025.10.1", source = { registry = "https://gitlab.mpcdf.mpg.de/api/v4/projects/2187/packages/pypi/simple" }, marker = "python_full_version >= '3.11'" },
 ]
-sdist = { url = "https://gitlab.mpcdf.mpg.de/api/v4/projects/2187/packages/pypi/files/a53d412ae3059248a1963cbd1efdc17b1b0392195b86b18a8bd44b8bb5174f5e/nomad_lab-1.4.1rc2.tar.gz", hash = "sha256:a53d412ae3059248a1963cbd1efdc17b1b0392195b86b18a8bd44b8bb5174f5e" }
+sdist = { url = "https://gitlab.mpcdf.mpg.de/api/v4/projects/2187/packages/pypi/files/0349b342d54bf04e52637ddbc6944562af7050fdc3d67f1940a689dbb0259fbe/nomad_lab-1.4.1.tar.gz", hash = "sha256:0349b342d54bf04e52637ddbc6944562af7050fdc3d67f1940a689dbb0259fbe" }
 wheels = [
-    { url = "https://gitlab.mpcdf.mpg.de/api/v4/projects/2187/packages/pypi/files/947a7b86e3a8baf5fce9e64a201c5fab1e651864d2cbe19ceffb983485f310d2/nomad_lab-1.4.1rc2-py3-none-any.whl", hash = "sha256:947a7b86e3a8baf5fce9e64a201c5fab1e651864d2cbe19ceffb983485f310d2" },
+    { url = "https://gitlab.mpcdf.mpg.de/api/v4/projects/2187/packages/pypi/files/24170079ea81cf92dceaf0cd36472132139b4163d35f9d1c464875315101873e/nomad_lab-1.4.1-py3-none-any.whl", hash = "sha256:24170079ea81cf92dceaf0cd36472132139b4163d35f9d1c464875315101873e" },
 ]
 
 [package.optional-dependencies]
@@ -5131,14 +5131,10 @@ wheels = [
 
 [[package]]
 name = "pynxtools-mpes"
-version = "0.2.6"
-source = { registry = "https://gitlab.mpcdf.mpg.de/api/v4/projects/2187/packages/pypi/simple" }
+version = "0.2.6.post1.dev5+geec59e8cf"
+source = { git = "https://github.com/FAIRmat-NFDI/pynxtools-mpes.git?rev=cruft-updates#eec59e8cff445f17f20aef7d01b3c6eb826e4fcf" }
 dependencies = [
     { name = "pynxtools" },
-]
-sdist = { url = "https://files.pythonhosted.org/packages/48/ce/3ce289782799924c3051cd2974041a10b01fdc0309aab013e558fc85f170/pynxtools_mpes-0.2.6.tar.gz", hash = "sha256:34fd23bcf14b4ddd5c1871fbd24ee2ae7d44aa1d85ec424bfa2ae6f283819061", size = 33347, upload-time = "2025-10-17T17:22:33.426Z" }
-wheels = [
-    { url = "https://files.pythonhosted.org/packages/97/df/d4286f75c131de09e057623f2bd04497ca03c857fe58b2713ac308273fe5/pynxtools_mpes-0.2.6-py3-none-any.whl", hash = "sha256:0d591275c8e27192bc58c44bc9e42b070905ec46d2bcb75c81f8f8508bcb8493", size = 40413, upload-time = "2025-10-17T17:22:32.312Z" },
 ]
 
 [[package]]
