@@ -24,14 +24,9 @@ env:
     workflowparsers
     nomad_porous_materials
     simulationworkflowschema
-    databaseparsers
-    soapnormalizer
     eelsdbparser
-    atomisticparsers
-    nomad_aitoolkit
-    pynxtools_igor
-    electronicparsers
     nomad_simulations
+    nomad_measurements
     fhi_sed_config
 
 permissions:
