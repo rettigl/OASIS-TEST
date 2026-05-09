@@ -3769,7 +3769,7 @@ requires-dist = [
     { name = "sed-processor", marker = "extra == 'jupyter'", specifier = ">=1.3.0" },
     { name = "specsanalyzer", marker = "extra == 'jupyter'", specifier = ">=1.2.0" },
 ]
-provides-extras = ["plugins", "jupyter", "dev"]
+provides-extras = ["plugins", "jupyter", "gpu-action", "cpu-action", "dev"]
 
 [[package]]
 name = "nomad-lab"
