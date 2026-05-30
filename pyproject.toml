@@ -28,6 +28,7 @@ repository = "https://github.com/rettigl/oasis-test"
 [project.optional-dependencies]
 # Add your plugins to the list below.
 plugins = [
+  "nomad-gui==2.0.0a2.dev583",
   "nomad-north-jupyter>=0.2.5",
   "perovskite-solar-cell-database @ git+https://github.com/FAIRmat-NFDI/nomad-perovskite-solar-cells-database.git",
   "nomad-porous-materials @ git+https://github.com/FAIRmat-NFDI/nomad-porous-materials.git",
