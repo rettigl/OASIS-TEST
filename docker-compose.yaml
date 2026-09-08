@@ -203,7 +203,7 @@ services:
   # # nomad cpu worker (actions)
   cpu_worker:
     restart: unless-stopped
-    image: ghcr.io/fairmat-nfdi/nomad-distro-template/cpu-action:main
+    image: ghcr.io/rettigl/oasis-test/cpu-action:${NOMAD_VERSION}
     platform: linux/amd64
     container_name: nomad_oasis_cpu_worker
     env_file:

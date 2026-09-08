@@ -20,7 +20,7 @@ dynamic = ["version"]
 readme = "README.md"
 requires-python = ">=3.10"
 license = { file = "LICENSE" }
-dependencies = ["nomad-lab[infrastructure]==1.4.2"]
+dependencies = ["nomad-lab[infrastructure]==1.4.3"]
 
 [project.urls]
 repository = "https://github.com/rettigl/oasis-test"
@@ -28,13 +28,14 @@ repository = "https://github.com/rettigl/oasis-test"
 [project.optional-dependencies]
 # Add your plugins to the list below.
 plugins = [
+  "nomad-gui==2.0.0b2",
   "nomad-north-jupyter>=0.2.5",
   "perovskite-solar-cell-database @ git+https://github.com/FAIRmat-NFDI/nomad-perovskite-solar-cells-database.git",
   "nomad-porous-materials @ git+https://github.com/FAIRmat-NFDI/nomad-porous-materials.git",
   "nomad-aitoolkit @ git+https://github.com/FAIRmat-NFDI/nomad-aitoolkit.git",
   "nomad-simulations>=0.7.0",
-  "pynxtools>=0.14.0",
-  "pynxtools-mpes>=0.2.8",
+  "pynxtools>=0.15.1",
+  "pynxtools-mpes @  git+https://github.com/FAIRmat-NFDI/pynxtools-mpes.git@mpes-north-tool",
   "pynxtools-igor>=0.1.6",
   "fhi-sed-config @ git+https://github.com/OpenCOMPES/fhi_sed_config.git@v1.3.17",
   "nomad-schema-plugin-run>=1.0.5",
@@ -63,13 +64,13 @@ jupyter = [
 gpu-action = []
 cpu-action = []
 
-dev = ["nomad-lab[infrastructure, dev]==1.4.2"]
+dev = ["nomad-lab[infrastructure, dev]==1.4.3"]
 
 [tool.uv]
 extra-index-url = [
   "https://gitlab.mpcdf.mpg.de/api/v4/projects/2187/packages/pypi/simple",
 ]
-prerelease = "explicit"
+prerelease = "if-necessary-or-explicit"
 
 [tool.setuptools.packages.find]
 exclude = ["gui*", "docs*", "config*"]

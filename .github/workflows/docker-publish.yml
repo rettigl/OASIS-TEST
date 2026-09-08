@@ -28,6 +28,7 @@ env:
     nomad_simulations
     nomad_measurements
     fhi_sed_config
+    nomad_gui
 
 permissions:
   contents: write
