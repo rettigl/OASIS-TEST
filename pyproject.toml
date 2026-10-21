@@ -37,7 +37,7 @@ plugins = [
   "nomad-aitoolkit @ git+https://github.com/FAIRmat-NFDI/nomad-aitoolkit.git",
   "nomad-simulations>=0.7.0",
   "pynxtools>=0.15.1",
-  "pynxtools-mpes @  git+https://github.com/FAIRmat-NFDI/pynxtools-mpes.git@mpes-north-tool",
+  "pynxtools-mpes",
   "pynxtools-igor>=0.1.6",
   "fhi-sed-config @ git+https://github.com/OpenCOMPES/fhi_sed_config.git@v1.3.17",
   "nomad-schema-plugin-run>=1.0.5",
