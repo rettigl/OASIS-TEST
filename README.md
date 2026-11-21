@@ -254,6 +254,24 @@ Any pushes to the main branch of this repository, such as when [adding a plugin]
 
 Please see the [Jupyter image](#the-jupyter-image) section below for more information on the jupyter NORTH image being generated in this repository.
 
+NORTH and its tool containers use `nomad_oasis_north_network`. The NOMAD app and
+Nginx are on both networks so notebooks can use the NOMAD API and Nginx can proxy
+tool sessions. Elasticsearch, MongoDB, Temporal, and the workers use the backend
+network only.
+
+When upgrading an Oasis where NORTH tools still share `nomad_oasis_network` with
+the backend, follow these steps to move tool sessions to `nomad_oasis_north_network`.
+
+1. Ask users to save their changes in the tool's `work` folder and move any files
+   they want to keep from other container-local folders into `work`. NORTH mounts
+   `work` from the host, so saved files there will be available after relaunch.
+2. Stop the running NORTH tool servers in JupyterHub before applying the updated
+   Compose file. DockerSpawner removes each tool container when it stops and
+   creates a new container on `nomad_oasis_north_network` at the next launch.
+3. After the update, check that `nomad_oasis_network` has no leftover NORTH tool
+   containers. Launch a fresh notebook, verify that a NOMAD API request succeeds,
+   and confirm that the notebook cannot connect directly to Elasticsearch or MongoDB.
+
 
 ### For an existing Oasis
 
@@ -592,7 +610,81 @@ Sometimes there are significant changes in these distribution templates, and you
 
 For detailed migration instructions, please refer to the [NOMAD Oasis Migration Guide](https://docs.nomad-lab.eu/howto/oasis/migrate.html).
 
+For the migration from NOMAD 1.4.3 to 2.0, `docker-compose.es7.yaml` provides a temporary
+Elasticsearch 7 service alongside the Elasticsearch 9 service in `docker-compose.yaml`.
+Use both files only during direct index migration, following the
+[NOMAD 2.0 migration guide](https://docs.nomad-lab.eu/howto/oasis/migrate/v2.0.html).
+Rebuilding the search index from MongoDB and archive files does not require this overlay.
+
 ## FAQ/Trouble shooting
+
+<details>
+<summary>MongoDB refuses to start on newer Linux kernels</summary>
+
+If the `mongo` container fails to start, check its logs:
+
+```sh
+docker compose logs mongo
+```
+
+The following message indicates a known incompatibility between MongoDB's
+TCMalloc allocator and newer Linux kernels:
+
+```text
+MongoDB cannot start: Linux kernel versions 6.19 and newer has a known incompatibility with this version of MongoDB.
+```
+
+Containers use the kernel of their Linux host (or the Linux VM provided by your
+container runtime on macOS/Windows). Changing the NOMAD image does not change
+that kernel. The Oasis administrator must apply the appropriate workaround:
+
+1. **Prefer updating the host or container-runtime VM kernel.** According to
+   [MongoDB's platform support notes](https://www.mongodb.com/docs/manual/administration/production-notes/#platform-support-notes),
+   the kernel incompatibility affects versions 6.19 through 7.0.13 and is resolved
+   in 7.0.14 and later. However, some MongoDB versions may still reject newer
+   kernels: [issue #245](https://github.com/FAIRmat-NFDI/nomad-distro-template/issues/245)
+   reports MongoDB 8.0.28 refusing to start on kernel 7.1.5. If this happens, try
+   the environment-variable workaround below.
+
+2. **If updating the kernel is not possible or MongoDB still refuses to start,**
+   add this entry to the existing `mongo.environment` list in `docker-compose.yaml`,
+   keeping the other entries:
+
+   ```yaml
+   services:
+     mongo:
+       environment:
+         - MONGO_DATA_DIR=/data/db
+         - MONGO_LOG_DIR=/dev/null
+         - GLIBC_TUNABLES=glibc.pthread.rseq=1
+   ```
+
+   This [reported workaround](https://miliucci.org/post/mongodb-tcmalloc-rseq/)
+   may reduce performance. Recreate the container to apply it, then check the logs:
+
+   ```sh
+   docker compose up -d --force-recreate mongo
+   docker compose logs mongo
+   ```
+
+> [!WARNING]
+> **Development-only fallback:** MongoDB `docker.io/mongo:8.0.4` has also been
+> reported to start on affected kernels, but this old version has known security
+> vulnerabilities (see the [8.0.5 release notes](https://www.mongodb.com/docs/v8.0/release-notes/8.0/#8.0.5---feb-20--2025)).
+> Do not use it in production or downgrade an existing Oasis database in place.
+> If needed for a disposable local test, change only the `mongo` service's `image`
+> to `docker.io/mongo:8.0.4` and use a separate, empty data volume.
+
+The template already uses the floating `docker.io/mongo:8.0` tag. Pulling it with
+`docker compose pull mongo` obtains the latest available 8.0 patch, but a newer
+patch is not a confirmed fix for this issue. Check the upstream
+[MongoDB issue](https://jira.mongodb.org/browse/SERVER-121912) and
+[template issue #245](https://github.com/FAIRmat-NFDI/nomad-distro-template/issues/245)
+for updates before removing a workaround or changing MongoDB major versions.
+
+</details>
+
+### Pulling the distribution image
 
 _I get an_ `Error response from daemon: Head "https://ghcr.io/v2/rettigl/OASIS-TEST/manifests/main": unauthorized`
 _when trying to pull my docker image._

@@ -4655,9 +4655,9 @@ requires-dist = [
     { name = "fhi-sed-config", marker = "extra == 'plugins'", git = "https://github.com/OpenCOMPES/fhi_sed_config.git?rev=v1.3.17" },
     { name = "jupyter-events", marker = "extra == 'jupyter'" },
     { name = "nomad-aitoolkit", marker = "extra == 'plugins'", git = "https://github.com/FAIRmat-NFDI/nomad-aitoolkit.git" },
-    { name = "nomad-gui", marker = "extra == 'plugins'", specifier = "==2.0.0" },
-    { name = "nomad-lab", extras = ["dev", "infrastructure"], marker = "extra == 'dev'", specifier = "==2.0.0" },
-    { name = "nomad-lab", extras = ["infrastructure"], specifier = "==2.0.0" },
+    { name = "nomad-gui", marker = "extra == 'plugins'", specifier = "==2.0.1" },
+    { name = "nomad-lab", extras = ["dev", "infrastructure"], marker = "extra == 'dev'", specifier = "==2.0.1" },
+    { name = "nomad-lab", extras = ["infrastructure"], specifier = "==2.0.1" },
     { name = "nomad-material-processing", marker = "extra == 'plugins'", specifier = ">=1.0.6" },
     { name = "nomad-measurements", marker = "extra == 'plugins'", specifier = ">=1.0.20" },
     { name = "nomad-normalizer-plugin-bandstructure", marker = "extra == 'plugins'", specifier = ">=1.0.4" },
@@ -4686,7 +4686,7 @@ provides-extras = ["plugins", "jupyter", "gpu-action", "cpu-action", "dev"]
 
 [[package]]
 name = "nomad-gui"
-version = "2.0.0"
+version = "2.0.1"
 source = { registry = "https://gitlab.mpcdf.mpg.de/api/v4/projects/2187/packages/pypi/simple" }
 dependencies = [
     { name = "click" },
@@ -4697,14 +4697,14 @@ dependencies = [
     { name = "plotly" },
     { name = "starlette" },
 ]
-sdist = { url = "https://gitlab.mpcdf.mpg.de/api/v4/projects/2187/packages/pypi/files/2afa393264183792830fb9c2bd96b0bc9d796e43be6b09d3e571d7e983cd5887/nomad_gui-2.0.0.tar.gz", hash = "sha256:2afa393264183792830fb9c2bd96b0bc9d796e43be6b09d3e571d7e983cd5887" }
+sdist = { url = "https://gitlab.mpcdf.mpg.de/api/v4/projects/2187/packages/pypi/files/3f269ce914e0e1198fb42c5850e997d929ac505bd696637453bc982372268734/nomad_gui-2.0.1.tar.gz", hash = "sha256:3f269ce914e0e1198fb42c5850e997d929ac505bd696637453bc982372268734" }
 wheels = [
-    { url = "https://gitlab.mpcdf.mpg.de/api/v4/projects/2187/packages/pypi/files/85cbc5eb7e0eb0f51d9f2b5874b0157eaa3344dc65c83bc27b2bee861d1a5508/nomad_gui-2.0.0-py3-none-any.whl", hash = "sha256:85cbc5eb7e0eb0f51d9f2b5874b0157eaa3344dc65c83bc27b2bee861d1a5508" },
+    { url = "https://gitlab.mpcdf.mpg.de/api/v4/projects/2187/packages/pypi/files/c1bd3c935ce078788ef327b04e2fab85f2449738c0c5293238e863631dc7dd54/nomad_gui-2.0.1-py3-none-any.whl", hash = "sha256:c1bd3c935ce078788ef327b04e2fab85f2449738c0c5293238e863631dc7dd54" },
 ]
 
 [[package]]
 name = "nomad-lab"
-version = "2.0.0"
+version = "2.0.1"
 source = { registry = "https://gitlab.mpcdf.mpg.de/api/v4/projects/2187/packages/pypi/simple" }
 dependencies = [
     { name = "ase" },
@@ -4749,9 +4749,9 @@ dependencies = [
     { name = "unidecode" },
     { name = "xarray" },
 ]
-sdist = { url = "https://gitlab.mpcdf.mpg.de/api/v4/projects/2187/packages/pypi/files/d61c08bac59f614d31db63c5a537a23e7e30b081d30ed822501b09809eae844e/nomad_lab-2.0.0.tar.gz", hash = "sha256:d61c08bac59f614d31db63c5a537a23e7e30b081d30ed822501b09809eae844e" }
+sdist = { url = "https://gitlab.mpcdf.mpg.de/api/v4/projects/2187/packages/pypi/files/b7aa9a59072ac528c08052629f3614f8f2fcd1fec6a585ac634b0181c1bf1c75/nomad_lab-2.0.1.tar.gz", hash = "sha256:b7aa9a59072ac528c08052629f3614f8f2fcd1fec6a585ac634b0181c1bf1c75" }
 wheels = [
-    { url = "https://gitlab.mpcdf.mpg.de/api/v4/projects/2187/packages/pypi/files/ae63264bd7714b175bbaca3569319dd98416c75fb95735e6a4b67bc83964a48e/nomad_lab-2.0.0-py3-none-any.whl", hash = "sha256:ae63264bd7714b175bbaca3569319dd98416c75fb95735e6a4b67bc83964a48e" },
+    { url = "https://gitlab.mpcdf.mpg.de/api/v4/projects/2187/packages/pypi/files/d09361ad7b2d0167f9b9487e08626429373867c80fd69584a301dcb6ddb283fb/nomad_lab-2.0.1-py3-none-any.whl", hash = "sha256:d09361ad7b2d0167f9b9487e08626429373867c80fd69584a301dcb6ddb283fb" },
 ]
 
 [package.optional-dependencies]
